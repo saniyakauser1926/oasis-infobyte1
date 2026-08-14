@@ -1,0 +1,43 @@
+def calculate_bmi():
+    print("=== BMI Calculator ===\n")
+
+    while True:
+        try:
+            weight = float(input("Enter your weight (kg): "))
+            height = float(input("Enter your height (m): "))
+
+            if weight <= 0 or height <= 0:
+                print("Error: Weight and height must be positive numbers. Try again.\n")
+                continue
+
+            break
+
+        except ValueError:
+            print("Error: Please enter numeric values only (e.g., 65.5).\n")
+
+
+    bmi = weight / (height ** 2)
+    bmi = round(bmi, 2)
+
+    # Classify BMI
+    if bmi < 18.5:
+        category = "Underweight"
+    elif bmi < 25:
+        category = "Normal"
+    elif bmi < 30:
+        category = "Overweight"
+    else:
+        category = "Obese"
+
+    print(f"\nYour BMI is: {bmi}")
+    print(f"Category: {category}")
+
+    again = input("\nCalculate another BMI? (y/n): ").lower()
+    if again == 'y':
+        print()
+        calculate_bmi()
+    else:
+        print("Thank you for using BMI Calculator!")
+
+if __name__ == "__main__":
+    calculate_bmi()
